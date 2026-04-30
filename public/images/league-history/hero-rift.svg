@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title>Hero Rift Artwork</title>
+  <desc>Abstract magical rift landscape with gold arcs and blue energy bands.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#091120"/>
+      <stop offset="50%" stop-color="#10254a"/>
+      <stop offset="100%" stop-color="#060912"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#5a8fff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#5a8fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="960" height="720" fill="url(#bg)"/>
+  <circle cx="500" cy="180" r="260" fill="url(#glow)"/>
+  <path d="M80 540C210 470 330 468 470 518C600 563 732 563 882 496" fill="none" stroke="#b6995f" stroke-width="10" stroke-linecap="round"/>
+  <path d="M90 596C236 520 377 518 480 560C604 613 735 613 872 562" fill="none" stroke="#4f83ff" stroke-opacity="0.7" stroke-width="8" stroke-linecap="round"/>
+  <path d="M430 88C496 148 543 216 569 290C531 339 493 401 456 476" fill="none" stroke="#d5c08c" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#d5c08c">
+    <circle cx="214" cy="466" r="14"/>
+    <circle cx="494" cy="526" r="12"/>
+    <circle cx="752" cy="528" r="14"/>
+  </g>
+</svg>
