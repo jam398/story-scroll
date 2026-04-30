@@ -28,6 +28,8 @@ Promote the approved staged candidate backgrounds into the shipped asset path an
 - Current shipped asset map: `src/lib/section-artwork.ts`
 - Current inventory: `docs/assets/image-inventory.md`
 - Current shipped images: `public/images/league-history/*`
+- Phase 11 carry-forward: the content deck is now a 9-slide merged sequence using `opening`, `founding-vision`, `launch-and-rift`, `ranked`, `esports-scale`, `living-game`, `culture-shift`, `runeterra-expansion`, and `legacy`.
+- Phase 11 carry-forward: staged background assignments and temporary fallback usage are already recorded in `content/league-history.md` and the Phase 11 inventory planning table.
 
 ## Files Expected To Change
 
@@ -63,8 +65,12 @@ npm run typecheck
 
 ## Completion Notes
 
-- Pending.
+- Approved staged backgrounds now ship from `public/images/league-history/` for `opening`, `launch-and-rift`, `esports-scale`, `living-game`, `culture-shift`, and `runeterra-expansion`.
+- `src/lib/section-artwork.ts`, `content/league-history.md`, and `docs/assets/image-inventory.md` now agree on which slides use promoted Riot-policy-backed imagery versus original SVG fallbacks.
+- The presentation layout surfaces the required Riot fan-project notice whenever Riot-policy-backed slide assets are present.
 
 ## Audit Findings
 
-- Pending.
+- Fixed Phase 12 contract drift where promoted slides still advertised `current-production` instead of `approved-staged` in the content metadata.
+- `npx vitest run tests/unit/content-repository.test.ts`
+- `npm run typecheck`

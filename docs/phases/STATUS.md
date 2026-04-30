@@ -20,7 +20,11 @@
 | 08-presentation-engine | done | The page now renders through a dedicated presentation layout with sticky slide stages, slide-map navigation, and mobile-safe fallback behavior. |
 | 09-slide-media-and-motion | done | The shipped assets are now inventoried with rights notes, and the presentation uses asset-level focal positioning and motion presets. |
 | 10-validation-and-deploy-refresh | done | Tests, docs, browser coverage, and GitHub Pages validation were refreshed for the final presentation model. |
-| 11-beat-merge-and-background-assignment | active | Merge the current beats down to the stronger staged sequence and assign approved candidate backgrounds or documented fallbacks. |
-| 12-background-promotion-and-inventory-refresh | planned | Promote approved staged backgrounds into the shipped asset path and refresh inventory records. |
-| 13-scroll-focus-behavior | planned | Make backgrounds arrive first and shift focus toward the text through restrained scroll-linked emphasis changes. |
-| 14-revalidation-and-deploy-refresh | planned | Refresh tests, docs, and deployment validation for the revised background-led presentation. |
+| 11-beat-merge-and-background-assignment | done | The content model now uses the merged 9-slide sequence, expanded background metadata, and aligned inventory planning notes. |
+| 12-background-promotion-and-inventory-refresh | done | Approved staged backgrounds are now shipped locally, the artwork map and inventory match production, and Riot-policy slides surface the required notice. |
+| 13-scroll-focus-behavior | done | The presentation now stages background imagery ahead of the reading layer and strengthens focus with restrained scroll-linked emphasis changes. |
+| 14-revalidation-and-deploy-refresh | done | Final validation, browser coverage, and deployment-mode build verification all passed for the revised background-led presentation. |
+| 15-card-handoff-and-image-only-plan | done | Specs, slide-image assignment, and the follow-up phase chain are refreshed for the same-stage handoff and image-only presentation revision. |
+| 16-card-handoff-implementation | done | The same-stage card handoff is implemented, the bottom media caption is removed, and the last abstract SVG fallbacks are gone from production. |
+| 17-image-only-validation-and-closeout | done | Full validation passed and the image-only handoff revision cycle is closed in docs, tests, and deployment-mode build output. |
+| 18-blur-reset-and-handoff-smoothing | done | The blur now peaks in the reading zone and relaxes during handoff, and the panel spacing/timing were tightened so slide replacement feels smoother. |

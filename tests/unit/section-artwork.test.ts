@@ -7,7 +7,7 @@ describe("section artwork mapping", () => {
   it("provides a local hero artwork asset with alt text", () => {
     const heroArtwork = getHeroArtwork();
 
-    expect(heroArtwork.src).toMatch(/^\/images\/league-history\/.+\.svg$/);
+    expect(heroArtwork.src).toMatch(/^\/images\/league-history\/.+\.jpg$/);
     expect(heroArtwork.alt.length).toBeGreaterThan(10);
   });
 
@@ -17,7 +17,7 @@ describe("section artwork mapping", () => {
     for (const slide of page.slides) {
       const artwork = getArtworkForKey(slide.media.assetKey);
 
-      expect(artwork.src).toMatch(/^\/images\/league-history\/.+\.svg$/);
+      expect(artwork.src).toMatch(/^\/images\/league-history\/.+\.jpg$/);
       expect(slide.media.alt.length).toBeGreaterThan(10);
     }
   });

@@ -14,13 +14,14 @@ type PresentationLayoutProps = {
 export function PresentationLayout({ page }: PresentationLayoutProps) {
   const firstYear = page.timeline.at(0)?.year;
   const lastYear = page.timeline.at(-1)?.year;
+  const usesRiotPolicyAssets = page.slides.some((slide) => slide.media.rightsPlan === "riot-policy");
 
   return (
     <main className="presentation-page">
       <div className="presentation-shell">
         <nav className="presentation-progress" aria-label="Presentation progress">
           <p className="eyebrow">Slide Map</p>
-          <h2 className="presentation-progress__title">League history in twelve beats</h2>
+          <h2 className="presentation-progress__title">League history in {page.slides.length} beats</h2>
           <p className="presentation-progress__summary">
             {page.slides.length} slides from {firstYear} to {lastYear}.
           </p>
@@ -41,6 +42,16 @@ export function PresentationLayout({ page }: PresentationLayoutProps) {
           {page.slides.map((slide, index) => (
             <PresentationSlideSection key={slide.slug} index={index} page={page} slide={slide} />
           ))}
+
+          {usesRiotPolicyAssets ? (
+            <footer className="presentation-notice" aria-label="Fan project notice">
+              <p>
+                From the Rift to the World was created under Riot Games&apos; &quot;Legal Jibber Jabber&quot;
+                policy using assets owned by Riot Games. Riot Games does not endorse or sponsor
+                this project.
+              </p>
+            </footer>
+          ) : null}
         </div>
       </div>
     </main>
@@ -71,7 +82,25 @@ function PresentationSlideSection({ page, slide, index }: PresentationSlideSecti
       id={slideId}
     >
       <div className="presentation-slide__stage">
-        <Reveal className="presentation-slide__panel" delayMs={40}>
+        <Reveal className="presentation-slide__media" delayMs={80}>
+          <figure className="presentation-slide__media-frame">
+            <Image
+              alt={slide.media.alt}
+              className={`presentation-slide__image presentation-slide__image--${artwork.motionPreset}`}
+              height={960}
+              src={withBasePath(artwork.src)}
+              style={{ objectPosition: artwork.objectPosition }}
+              width={1280}
+            />
+            <div aria-hidden="true" className="presentation-slide__media-scrim" />
+            <div aria-hidden="true" className="presentation-slide__media-focus" />
+          </figure>
+        </Reveal>
+
+        <div className="presentation-slide__scroll-panel">
+          <div aria-hidden="true" className="presentation-slide__lead-in" />
+
+          <Reveal className="presentation-slide__panel" delayMs={40}>
           <div className="presentation-slide__panel-surface">
             <div className="presentation-slide__meta-row">
               <p className="eyebrow">{slide.eyebrow}</p>
@@ -95,25 +124,10 @@ function PresentationSlideSection({ page, slide, index }: PresentationSlideSecti
             <MarkdownRenderer markdown={slide.markdown} />
             {renderSlideSupplement(page, slide)}
           </div>
-        </Reveal>
+          </Reveal>
 
-        <Reveal className="presentation-slide__media" delayMs={100}>
-          <figure className="presentation-slide__media-frame">
-            <Image
-              alt={slide.media.alt}
-              className={`presentation-slide__image presentation-slide__image--${artwork.motionPreset}`}
-              height={960}
-              src={withBasePath(artwork.src)}
-              style={{ objectPosition: artwork.objectPosition }}
-              width={1280}
-            />
-            <div aria-hidden="true" className="presentation-slide__media-scrim" />
-            <figcaption className="presentation-slide__media-caption">
-              <span className="meta-label">Visual beat</span>
-              <p>{slide.keyTakeaway}</p>
-            </figcaption>
-          </figure>
-        </Reveal>
+          <div aria-hidden="true" className="presentation-slide__trail-out" />
+        </div>
       </div>
     </section>
   );

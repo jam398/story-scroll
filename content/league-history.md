@@ -38,11 +38,10 @@ slides:
     media:
       treatment: full-bleed
       assetKey: hero-rift
-      rightsPlan: original
+      rightsPlan: riot-policy
       backgroundMode: approved-staged
-      stagedSource: docs/assets/champions.jpg
-      sourcePlan: The current shipped hero artwork remains in production for this phase, but the approved next background for the opening slide is the staged champions image.
-      alt: Abstract magical rift landscape with gold timeline arcs and blue energy bands.
+      sourcePlan: The production opening background is the promoted local champions collage image shipped under Riot Games' Legal Jibber Jabber fan-project policy.
+      alt: League of Legends champions gathered in a dramatic blue-and-gold scene.
   - slug: founding-vision
     type: background
     eyebrow: Origins
@@ -53,11 +52,10 @@ slides:
     media:
       treatment: split
       assetKey: big-idea
-      rightsPlan: original
-      backgroundMode: temporary-fallback
-      stagedSource: docs/assets/logo.jpg
-      sourcePlan: The current shipped founding artwork remains in production for this phase, but the approved temporary fallback for the next visual pass is the staged logo image.
-      alt: Abstract studio-to-rift composition with layered gold paths and blue light gradients.
+      rightsPlan: riot-policy
+      backgroundMode: approved-staged
+      sourcePlan: The founding slide now reuses the promoted local champions collage image so the beat stays inside the staged image system instead of reverting to abstract fallback art.
+      alt: League of Legends champions gathered in a broad blue-and-gold scene that reads as a shared world rather than a single match.
   - slug: launch-and-rift
     type: diagram
     eyebrow: Launch
@@ -68,11 +66,10 @@ slides:
     media:
       treatment: diagram
       assetKey: launch-2009
-      rightsPlan: original
+      rightsPlan: riot-policy
       backgroundMode: approved-staged
-      stagedSource: docs/assets/wp15730906-league-of-legends-map-wallpapers.jpg
-      sourcePlan: The current shipped launch artwork remains in production for this phase, but the approved next background is the staged Summoner's Rift map image used for the merged launch-and-structure beat.
-      alt: Abstract battlefield layout with lane-like paths, glowing objective markers, and a 2009 accent badge.
+      sourcePlan: The production launch background is the promoted local Summoner's Rift map image shipped under Riot Games' Legal Jibber Jabber fan-project policy.
+      alt: Summoner's Rift seen from above with its opposing bases, lanes, and jungle paths.
   - slug: ranked
     type: background
     eyebrow: Competition
@@ -83,11 +80,10 @@ slides:
     media:
       treatment: split
       assetKey: ranked-play
-      rightsPlan: original
-      backgroundMode: temporary-fallback
-      stagedSource: docs/assets/logo.jpg
-      sourcePlan: The current shipped ranked artwork remains in production for this phase, but the approved temporary fallback for the next visual pass is the staged logo image.
-      alt: Abstract competitive ladder illustration with ascending markers and draft-board geometry.
+      rightsPlan: riot-policy
+      backgroundMode: approved-staged
+      sourcePlan: The ranked slide now uses the promoted classic-roster image so the beat stays within the staged image set rather than falling back to abstract ladder art.
+      alt: A dense spread of classic League of Legends champion portraits that suggests long-term mastery and roster knowledge.
   - slug: esports-scale
     type: timeline
     eyebrow: Esports
@@ -98,11 +94,10 @@ slides:
     media:
       treatment: timeline
       assetKey: esports
-      rightsPlan: original
+      rightsPlan: riot-policy
       backgroundMode: approved-staged
-      stagedSource: docs/assets/world.jpg
-      sourcePlan: The current shipped esports artwork remains in production for this phase, but the approved next background for the merged esports-scale beat is the staged world image.
-      alt: Abstract esports arena with stage lighting, crowd silhouettes, and a central trophy glow.
+      sourcePlan: The production esports background is the promoted local Worlds-stage image shipped under Riot Games' Legal Jibber Jabber fan-project policy.
+      alt: A League of Legends Worlds stage framed by large globe imagery and arena lighting.
   - slug: living-game
     type: background
     eyebrow: Reinvention
@@ -113,11 +108,10 @@ slides:
     media:
       treatment: split
       assetKey: living-game
-      rightsPlan: original
+      rightsPlan: riot-policy
       backgroundMode: approved-staged
-      stagedSource: docs/assets/old champions.jpg
-      sourcePlan: The current shipped living-game artwork remains in production for this phase, but the approved temporary next background is the staged old-champions image until a cleaner replacement is curated.
-      alt: Abstract patchwork grid of champion cards, map tiles, and update pulses.
+      sourcePlan: The production living-game background is the promoted local classic-roster image shipped under Riot Games' Legal Jibber Jabber fan-project policy.
+      alt: A dense grid of classic League of Legends champion portraits and splash-art fragments.
   - slug: culture-shift
     type: split
     eyebrow: Culture
@@ -128,11 +122,10 @@ slides:
     media:
       treatment: split
       assetKey: culture
-      rightsPlan: original
+      rightsPlan: riot-policy
       backgroundMode: approved-staged
-      stagedSource: docs/assets/champions.jpg
-      sourcePlan: The current shipped culture artwork remains in production for this phase, but the approved temporary next background is the staged champions image until a stronger culture-specific background is added.
-      alt: Abstract neon concert scene with pop-stage lighting and waveform arcs.
+      sourcePlan: The production culture background is the promoted local champions collage image shipped under Riot Games' Legal Jibber Jabber fan-project policy while a more culture-specific replacement remains optional.
+      alt: League of Legends champions layered together in a dramatic promotional collage.
   - slug: runeterra-expansion
     type: split
     eyebrow: Universe
@@ -143,11 +136,10 @@ slides:
     media:
       treatment: split
       assetKey: runeterra
-      rightsPlan: original
+      rightsPlan: riot-policy
       backgroundMode: approved-staged
-      stagedSource: docs/assets/runatera-map.jpg
-      sourcePlan: The current shipped Runeterra artwork remains in production for this phase, but the approved next background for the merged universe-expansion beat is the staged Runeterra map image.
-      alt: Abstract split-city fantasy-tech skyline with elevated towers and undercity glow.
+      sourcePlan: The production universe-expansion background is the promoted local Runeterra map image shipped under Riot Games' Legal Jibber Jabber fan-project policy.
+      alt: A stylized map of Runeterra showing multiple regions across the wider League universe.
   - slug: legacy
     type: closing
     eyebrow: Legacy
@@ -158,11 +150,10 @@ slides:
     media:
       treatment: closing
       assetKey: legacy
-      rightsPlan: original
-      backgroundMode: temporary-fallback
-      stagedSource: docs/assets/logo.jpg
-      sourcePlan: The current shipped legacy artwork remains in production for this phase, but the approved temporary fallback for the next visual pass is the staged logo image.
-      alt: Abstract horizon showing an open rift, timeline trails, and a distant luminous skyline.
+      rightsPlan: riot-policy
+      backgroundMode: approved-staged
+      sourcePlan: The closing slide now reuses the promoted Worlds-stage image so the ending remains inside the staged image system without returning to the abstract fallback horizon.
+      alt: A League of Legends Worlds stage framed by globe imagery and arena lighting, now used as the closing wide-scale backdrop.
 ---
 League of Legends changed from one online game into a living platform, a global esport, and a larger entertainment universe.
 

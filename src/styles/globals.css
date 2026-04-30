@@ -174,33 +174,56 @@ h2 {
 
 .presentation-track {
   display: grid;
+  gap: 0.35rem;
 }
 
 .presentation-slide {
-  min-height: 168vh;
+  min-height: 214vh;
   position: relative;
   scroll-margin-top: 1rem;
 }
 
 .presentation-slide--opening,
 .presentation-slide--closing {
-  min-height: 152vh;
+  min-height: 196vh;
 }
 
 .presentation-slide__stage {
+  position: relative;
+  min-height: inherit;
+}
+
+.presentation-slide__media {
+  min-width: 0;
+}
+
+.presentation-slide__media {
   position: sticky;
   top: 0;
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 1rem;
-  align-items: center;
-  padding: 1rem 0;
 }
 
-.presentation-slide__panel,
-.presentation-slide__media {
+.presentation-slide__scroll-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 40rem);
+  margin-left: clamp(1rem, 4vw, 3.25rem);
+  padding-bottom: 8vh;
+}
+
+.presentation-slide__panel {
   min-width: 0;
+  position: sticky;
+  top: clamp(6.25rem, 20vh, 11rem);
+  z-index: 2;
+}
+
+.presentation-slide__lead-in {
+  height: clamp(40vh, 48vh, 56vh);
+}
+
+.presentation-slide__trail-out {
+  height: 76vh;
 }
 
 .presentation-slide__panel-surface {
@@ -210,9 +233,16 @@ h2 {
   border: 1px solid rgba(173, 140, 74, 0.24);
   border-radius: 1.7rem;
   background:
-    radial-gradient(circle at top left, rgba(79, 131, 255, 0.18), transparent 40%),
-    linear-gradient(180deg, rgba(16, 21, 34, 0.96), rgba(9, 12, 22, 0.94));
+    radial-gradient(circle at top left, rgba(79, 131, 255, 0.22), transparent 40%),
+    linear-gradient(180deg, rgba(16, 21, 34, 0.78), rgba(9, 12, 22, 0.88));
+  backdrop-filter: blur(18px) saturate(110%);
   box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.34);
+  transition:
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease,
+    opacity 220ms ease,
+    transform 220ms ease;
 }
 
 .presentation-slide__meta-row {
@@ -250,6 +280,7 @@ h2 {
 
 .presentation-slide__title--hero {
   font-size: clamp(3.2rem, 7vw, 5.8rem);
+  line-height: 1.02;
 }
 
 .presentation-slide__takeaway {
@@ -321,13 +352,14 @@ h2 {
 
 .presentation-slide__media-frame {
   position: relative;
-  min-height: clamp(24rem, 72vh, 50rem);
+  min-height: 100vh;
   margin: 0;
   overflow: hidden;
-  border-radius: 1.9rem;
+  border-radius: 2rem;
   border: 1px solid rgba(173, 140, 74, 0.2);
   background: rgba(10, 14, 24, 0.92);
   box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.36);
+  transform-origin: center bottom;
 }
 
 .presentation-slide__image {
@@ -339,12 +371,9 @@ h2 {
   will-change: transform;
 }
 
-.presentation-slide--reverse .presentation-slide__panel {
-  order: 2;
-}
-
-.presentation-slide--reverse .presentation-slide__media {
-  order: 1;
+.presentation-slide--reverse .presentation-slide__scroll-panel {
+  margin-left: auto;
+  margin-right: clamp(1rem, 4vw, 3.25rem);
 }
 
 .presentation-slide__image--float {
@@ -367,49 +396,85 @@ h2 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(6, 9, 18, 0.08), rgba(6, 9, 18, 0.55) 78%, rgba(6, 9, 18, 0.9)),
+    linear-gradient(180deg, rgba(6, 9, 18, 0.04), rgba(6, 9, 18, 0.18) 42%, rgba(6, 9, 18, 0.76) 92%),
     radial-gradient(circle at top right, rgba(79, 131, 255, 0.18), transparent 38%);
 }
 
-.presentation-slide__media-caption {
+.presentation-slide__media-focus {
   position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 1;
-  padding: 1rem 1.1rem;
-  border: 1px solid rgba(173, 140, 74, 0.16);
-  border-radius: 1rem;
-  background: rgba(9, 12, 22, 0.72);
-  backdrop-filter: blur(12px);
+  inset: 0;
+  opacity: 1;
+  background: linear-gradient(180deg, rgba(6, 9, 18, 0) 0%, rgba(6, 9, 18, 0.08) 48%, rgba(6, 9, 18, 0.34) 72%, rgba(6, 9, 18, 0.6) 100%);
+  backdrop-filter: blur(2px) saturate(102%);
+  mask-image: linear-gradient(180deg, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.82) 72%, rgba(0, 0, 0, 1) 100%);
 }
 
-.presentation-slide__media-caption p {
-  margin: 0.45rem 0 0;
-  max-width: 26rem;
-  color: var(--text);
-  line-height: 1.5;
+.presentation-slide--opening .presentation-slide__lead-in {
+  height: 30vh;
 }
 
-.presentation-slide--opening .presentation-slide__stage {
-  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+@supports (animation-timeline: view()) {
+  .presentation-slide {
+    view-timeline-name: --presentation-slide;
+    view-timeline-axis: block;
+  }
+
+  .presentation-slide__media-frame {
+    opacity: 0.42;
+    transform: translate3d(0, 14vh, 0) scale(1.03);
+    animation: presentation-stage-rise both linear;
+    animation-timeline: --presentation-slide;
+    animation-range: entry 0% cover 44%;
+  }
+
+  .presentation-slide__panel-surface {
+    opacity: 0;
+    transform: translate3d(0, 22vh, 0);
+    animation: presentation-panel-handoff both linear;
+    animation-timeline: --presentation-slide;
+    animation-range: entry 4% exit 96%;
+  }
+
+  .presentation-slide__media-focus {
+    opacity: 0.04;
+    backdrop-filter: blur(0px) saturate(100%);
+    animation: presentation-focus-shift both linear;
+    animation-timeline: --presentation-slide;
+    animation-range: entry 18% exit 94%;
+  }
 }
 
-.presentation-slide--timeline .presentation-slide__stage,
-.presentation-slide--closing .presentation-slide__stage {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+.presentation-slide--timeline .presentation-slide__scroll-panel,
+.presentation-slide--closing .presentation-slide__scroll-panel {
+  width: min(100%, 44rem);
 }
 
 .presentation-slide--opening .presentation-slide__media-frame,
 .presentation-slide--closing .presentation-slide__media-frame {
-  min-height: clamp(26rem, 78vh, 54rem);
+  min-height: 100vh;
 }
 
 .presentation-slide--opening .presentation-slide__panel-surface,
 .presentation-slide--closing .presentation-slide__panel-surface {
   background:
     radial-gradient(circle at top left, rgba(79, 131, 255, 0.22), transparent 42%),
-    linear-gradient(180deg, rgba(20, 26, 40, 0.97), rgba(9, 12, 22, 0.95));
+    linear-gradient(180deg, rgba(20, 26, 40, 0.82), rgba(9, 12, 22, 0.9));
+}
+
+.presentation-notice {
+  margin: 0 0 2rem;
+  padding: 1rem 1.15rem;
+  border: 1px solid rgba(173, 140, 74, 0.18);
+  border-radius: 1rem;
+  background: rgba(9, 12, 22, 0.84);
+  box-shadow: 0 1rem 2.6rem rgba(0, 0, 0, 0.25);
+}
+
+.presentation-notice p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.94rem;
 }
 
 @keyframes presentation-float {
@@ -449,6 +514,83 @@ h2 {
 
   to {
     transform: scale(1.07) translate3d(0, -2%, 0);
+  }
+}
+
+@keyframes presentation-stage-rise {
+  from {
+    opacity: 0.42;
+    transform: translate3d(0, 14vh, 0) scale(1.03);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes presentation-panel-handoff {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18vh, 0) scale(0.985);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+
+  18% {
+    opacity: 0.36;
+    transform: translate3d(0, 10vh, 0) scale(0.992);
+    box-shadow: 0 0.7rem 1.8rem rgba(0, 0, 0, 0.18);
+  }
+
+  34% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.34);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    box-shadow: 0 1.6rem 4rem rgba(0, 0, 0, 0.34);
+  }
+
+  86% {
+    opacity: 0.54;
+    transform: translate3d(0, -1.1vh, 0) scale(0.995);
+    box-shadow: 0 0.7rem 1.8rem rgba(0, 0, 0, 0.18);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -3.25vh, 0) scale(0.985);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes presentation-focus-shift {
+  0% {
+    opacity: 0.04;
+    backdrop-filter: blur(0px) saturate(100%);
+  }
+
+  24% {
+    opacity: 0.2;
+    backdrop-filter: blur(4px) saturate(99%);
+  }
+
+  52% {
+    opacity: 0.92;
+    backdrop-filter: blur(18px) saturate(90%);
+  }
+
+  72% {
+    opacity: 0.78;
+    backdrop-filter: blur(14px) saturate(93%);
+  }
+
+  100% {
+    opacity: 0.2;
+    backdrop-filter: blur(3px) saturate(99%);
   }
 }
 
@@ -734,6 +876,19 @@ h2 {
     animation: none;
     transform: none;
   }
+
+  .presentation-slide__media-frame,
+  .presentation-slide__panel-surface {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .presentation-slide__media-focus {
+    animation: none;
+    opacity: 1;
+    backdrop-filter: none;
+  }
 }
 
 @media (max-width: 640px) {
@@ -792,9 +947,9 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .presentation-slide--reverse .presentation-slide__panel,
-  .presentation-slide--reverse .presentation-slide__media {
-    order: initial;
+  .presentation-slide--reverse .presentation-slide__scroll-panel {
+    margin-left: 0.75rem;
+    margin-right: 0;
   }
 
   .presentation-slide__meta-row,
@@ -807,6 +962,12 @@ h2 {
     left: 0.75rem;
     right: 0.75rem;
     bottom: 0.75rem;
+  }
+
+  .presentation-slide__scroll-panel {
+    width: min(100%, calc(100% - 0.75rem));
+    margin-left: 0.75rem;
+    padding-bottom: 16vh;
   }
 }
 
@@ -830,21 +991,41 @@ h2 {
     min-height: auto;
   }
 
-  .presentation-slide__stage,
-  .presentation-slide--opening .presentation-slide__stage,
-  .presentation-slide--timeline .presentation-slide__stage,
-  .presentation-slide--closing .presentation-slide__stage {
+  .presentation-slide__stage {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .presentation-slide__media {
     position: relative;
     top: auto;
     min-height: auto;
-    grid-template-columns: 1fr;
-    padding: 0.2rem 0 1rem;
+  }
+
+  .presentation-slide__scroll-panel,
+  .presentation-slide--timeline .presentation-slide__scroll-panel,
+  .presentation-slide--closing .presentation-slide__scroll-panel,
+  .presentation-slide--reverse .presentation-slide__scroll-panel {
+    width: 100%;
+    margin: -4.5rem 0 0;
+    padding: 0 0 1rem;
+  }
+
+  .presentation-slide__lead-in,
+  .presentation-slide__trail-out {
+    display: none;
+  }
+
+  .presentation-slide__panel {
+    position: relative;
+    top: auto;
   }
 
   .presentation-slide__media-frame,
   .presentation-slide--opening .presentation-slide__media-frame,
   .presentation-slide--closing .presentation-slide__media-frame {
-    min-height: 22rem;
+    min-height: 26rem;
+    border-radius: 1.4rem;
   }
 
   .scrolly-hero,
@@ -856,5 +1037,40 @@ h2 {
 
   .section-shell__header {
     display: grid;
+  }
+
+  .presentation-notice {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-height: 560px) and (min-width: 961px) {
+  .presentation-slide__panel {
+    top: 4rem;
+  }
+
+  .presentation-slide__panel-surface {
+    gap: 0.8rem;
+    padding: 1.15rem 1.25rem;
+  }
+
+  .presentation-slide__title {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+  }
+
+  .presentation-slide__title--hero {
+    font-size: clamp(2.7rem, 5.2vw, 4.2rem);
+  }
+
+  .presentation-slide__takeaway,
+  .presentation-slide .markdown-renderer__paragraph,
+  .presentation-slide .markdown-renderer__list {
+    font-size: 0.96rem;
+    line-height: 1.5;
+  }
+
+  .presentation-slide__supplement--stats {
+    gap: 0.55rem;
+    padding-top: 0.25rem;
   }
 }

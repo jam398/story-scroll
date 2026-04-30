@@ -71,8 +71,14 @@ npm run typecheck
 
 ## Completion Notes
 
-- Pending.
+- Updated the content schema to allow 8-12 slides and require explicit background staging mode metadata.
+- Rewrote the League history deck from 12 slides to the approved 9-slide merged sequence.
+- Recorded the staged-background and temporary-fallback plan directly in the content file and inventory notes.
+- Refreshed repository tests to validate the merged deck shape and media metadata.
+- Resolved a QA drift in the inventory so the shipped-asset table uses the merged slide slugs.
 
 ## Audit Findings
 
-- Pending.
+- `npm run test` passed.
+- `npm run typecheck` passed.
+- Whole-file QA found one documentation drift in `docs/assets/image-inventory.md`; it was corrected and revalidated before closing the phase.

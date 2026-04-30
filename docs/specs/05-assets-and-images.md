@@ -13,6 +13,7 @@ Define how images and other media are sourced, stored, documented, and safely us
 - The visuals contribute to pacing so text-heavy beats feel lighter to read.
 - The asset set supports full-bleed backgrounds, split-layout media, and at least one data or map graphic.
 - Candidate images staged under `docs/assets/` can be reviewed and promoted into the shipped asset set when they better match a slide's story beat than the current placeholder.
+- The shipped presentation can reuse the staged user-provided image set across multiple beats when that is preferable to keeping abstract fallback art in production.
 
 ## Constraints
 
@@ -23,7 +24,7 @@ Define how images and other media are sourced, stored, documented, and safely us
 - `docs/assets/` is a staging area for candidate backgrounds, not the final production asset path.
 - Do not use Riot logos or trademarks as decorative branding unless a written permission path is documented.
 - If Riot-policy-permitted assets are used, include the required fan-project notice in the final site contract.
-- A shared fallback background, including the staged logo image if approved, may be used temporarily on weaker slides while slide-specific imagery is still being curated.
+- If the staged logo image does not have a documented permission path, do not ship it; instead, reuse the non-logo staged image set rather than keeping abstract SVG fallbacks in production.
 
 ## Non-Goals
 
@@ -38,4 +39,5 @@ Define how images and other media are sourced, stored, documented, and safely us
 - The page remains complete even if some slides use abstract or original visuals instead of branded media.
 - No asset in the repo lacks a usage note and rights note.
 - Every image-led slide uses either a slide-specific approved background or a documented temporary fallback background with a stated reason.
+- No production slide should depend on the old abstract SVG fallback set once this revision cycle is complete.
 - The page includes visual support across the opening, middle beats, and closing beats rather than isolating imagery to one panel.

@@ -21,12 +21,22 @@ describe("content repository", () => {
     expect(page.timeline).toHaveLength(8);
     expect(page.slides).toHaveLength(9);
     expect(page.openingSlide.title).toBe("From the Rift to the World");
+    expect(page.openingSlide.media.rightsPlan).toBe("riot-policy");
+    expect(page.openingSlide.media.backgroundMode).toBe("approved-staged");
     expect(page.storySlides[0]?.title).toBe("A Game Built to Keep Evolving");
+    expect(page.storySlides[0]?.media.rightsPlan).toBe("riot-policy");
+    expect(page.storySlides[0]?.media.backgroundMode).toBe("approved-staged");
     expect(page.storySlides[1]?.title).toBe("Welcome to the Rift");
     expect(page.storySlides[0]?.markdown).toContain("Riot Games was founded in 2006");
     expect(page.storySlides[1]?.media.backgroundMode).toBe("approved-staged");
-    expect(page.storySlides[1]?.media.stagedSource).toBe("docs/assets/wp15730906-league-of-legends-map-wallpapers.jpg");
+    expect(page.storySlides[1]?.media.rightsPlan).toBe("riot-policy");
+    expect(page.storySlides[2]?.media.backgroundMode).toBe("approved-staged");
+    expect(page.storySlides[2]?.media.rightsPlan).toBe("riot-policy");
+    expect(page.storySlides[3]?.media.backgroundMode).toBe("approved-staged");
+    expect(page.storySlides[5]?.media.backgroundMode).toBe("approved-staged");
     expect(page.closingSlide.title).toBe("The Rift Is Still Open");
+    expect(page.closingSlide.media.rightsPlan).toBe("riot-policy");
+    expect(page.closingSlide.media.backgroundMode).toBe("approved-staged");
   });
 
   it("rejects invalid frontmatter with a clear error", async () => {

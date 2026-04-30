@@ -29,6 +29,8 @@ Change the presentation staging so backgrounds enter from the bottom first and t
 - Current motion surface: `src/components/motion/Reveal.tsx`
 - Current global styles: `src/styles/globals.css`
 - Current content source: `content/league-history.md`
+- Phase 12 carry-forward: approved staged Riot-policy-backed backgrounds now ship locally for `opening`, `launch-and-rift`, `esports-scale`, `living-game`, `culture-shift`, and `runeterra-expansion`.
+- Phase 12 carry-forward: original SVG fallbacks remain in production for `founding-vision`, `ranked`, and `legacy`, and the presentation already renders the required Riot fan-project notice.
 
 ## Files Expected To Change
 
@@ -66,8 +68,13 @@ npm run typecheck
 
 ## Completion Notes
 
-- Pending.
+- The presentation track now holds the reading card lower in the scroll sequence so the background scene arrives first.
+- Progressive enhancement via CSS view timelines softens captions and strengthens the lower focus layer as the reader reaches the text zone.
+- Reduced-motion users keep the same reading order without depending on scroll-driven animation.
 
 ## Audit Findings
 
-- Pending.
+- Fixed JSX lint errors in the Riot fan-project notice by escaping the notice string in `src/components/layouts/PresentationLayout.tsx`.
+- `npm run lint`
+- `npm run typecheck`
+- Manual browser spot-check on `http://localhost:3000` confirmed an image-only transition state before the reading card and a later text-focused reading state.

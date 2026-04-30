@@ -63,4 +63,4 @@ On Windows Git Bash, use `MSYS_NO_PATHCONV=1 NEXT_PUBLIC_BASE_PATH=/scroll-telli
 
 ## Current State
 
-The first redesign implementation cycle is complete, and a new revision cycle is now active. The next pass is focused on stronger staged backgrounds, a likely 9-slide merged beat structure, scroll-linked text-focus behavior, and promoting selected candidate images from `docs/assets/` into the shipped asset set.
+The latest motion pass is complete. The presentation now lets the background blur build into the reading zone and then ease back toward normal as the slide yields, while the shared card slot transitions with less dead space and a smoother overlap between outgoing and incoming slides. Lint, typecheck, and Playwright browser coverage all passed after this refinement.

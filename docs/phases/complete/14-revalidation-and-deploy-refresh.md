@@ -28,6 +28,8 @@ Refresh the validation stack and deployment verification after the new beat merg
 - Current browser tests: `tests/browser/*`
 - Current deployment config: `next.config.ts`, `playwright.config.ts`, `.github/workflows/pages.yml`
 - Current docs: `README.md`, `docs/phases/STATUS.md`, `docs/assets/image-inventory.md`
+- Phase 13 carry-forward: the presentation now stages background imagery first with CSS view-timeline enhancement and reduced-motion-safe fallbacks.
+- Phase 13 carry-forward: `src/components/layouts/PresentationLayout.tsx` contains the Riot fan-project notice with JSX-safe escaping, and `src/styles/globals.css` owns the revised focus treatment.
 
 ## Files Expected To Change
 
@@ -69,8 +71,15 @@ MSYS_NO_PATHCONV=1 NEXT_PUBLIC_BASE_PATH=/scroll-telling npm run build
 
 ## Completion Notes
 
-- Pending.
+- The revised 9-slide presentation passes lint, typecheck, unit tests, production build, browser tests, and deployment-mode build validation.
+- The background-led scroll treatment, promoted production imagery, and Riot fan-project notice remain aligned across the content source, artwork map, tests, and docs.
+- No additional test or deployment doc changes were required during this pass because the existing validation surface already matched the revised presentation contract.
 
 ## Audit Findings
 
-- Pending.
+- `npm run lint`
+- `npm run typecheck`
+- `npm run test`
+- `npm run build`
+- `npm run test:e2e`
+- `MSYS_NO_PATHCONV=1 NEXT_PUBLIC_BASE_PATH=/scroll-telling npm run build`
